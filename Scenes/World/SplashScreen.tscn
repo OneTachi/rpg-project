@@ -1,0 +1,295 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Assets/Fonts/Gamepixies-8MO6n.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/World/ChefHat.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Player/Player.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Enemies/Bat.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Effects/EnemyDeathEffect.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Button.gd" type="Script" id=6]
+[ext_resource path="res://Assets/World/Bush.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 32, 32 )
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=5]
+length = 4.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerAnim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.3, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10.5019, 145.211 ), Vector2( 58.4517, 145.211 ), Vector2( 58.4517, 145.211 ), Vector2( 159.508, 145.211 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerAnim:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 2, 2.15, 2.3, 2.45, 2.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 1, 2, 3, 4, 0, 40, 41, 42, 43, 44, 0, 24, 25, 27, 0, 18 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ChefHat:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.85, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 151.027, 49.9569 ), Vector2( 151.027, 49.9569 ), Vector2( 151.027, 117.305 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BatAnim:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DeathAnim:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.2, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("DeathAnim:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 2.2, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("DeathAnim:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 4.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "splash_over"
+} ]
+}
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 16, 24 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 5 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 5 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 5 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 5 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 5 )
+region = Rect2( 288, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=22]
+animations = [ {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "Animate",
+"speed": 15.0
+} ]
+
+[node name="SplashScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackPanel" type="Panel" parent="."]
+modulate = Color( 0.0705882, 0.0352941, 0.47451, 1 )
+anchor_left = -0.00185814
+anchor_right = -0.00185814
+margin_left = 0.594605
+margin_right = 320.595
+margin_bottom = 180.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FrontPanel" type="Panel" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = -0.00185814
+anchor_right = -0.00185814
+margin_left = 0.594605
+margin_right = 320.595
+margin_bottom = 180.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cooked By" type="RichTextLabel" parent="."]
+margin_left = 79.2363
+margin_top = 3.55455
+margin_right = 249.236
+margin_bottom = 57.5546
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[wave amp=50 freq=5][center]Beautifully Cooked By: [/center] [wave]"
+text = "Beautifully Cooked By:  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="RichTextLabel" parent="."]
+margin_left = 87.0
+margin_top = 65.551
+margin_right = 230.0
+margin_bottom = 98.551
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center][tornado radius=1 freq=4][rainbow freq=1.2 sat=10 val=20]Sidd![/rainbow][/tornado][/center]"
+text = "Sidd!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChefHat" type="TextureRect" parent="."]
+margin_left = 151.027
+margin_top = 49.9569
+margin_right = 167.027
+margin_bottom = 65.957
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RollingIn"
+anims/RollingIn = SubResource( 5 )
+
+[node name="BatAnim" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 175.266, 145.239 )
+frames = SubResource( 11 )
+frame = 3
+playing = true
+flip_h = true
+
+[node name="PlayerAnim" type="Sprite" parent="."]
+position = Vector2( 159.508, 145.211 )
+texture = ExtResource( 3 )
+hframes = 60
+
+[node name="DeathAnim" type="AnimatedSprite" parent="."]
+position = Vector2( 175.266, 145.239 )
+frames = SubResource( 22 )
+animation = "Animate"
